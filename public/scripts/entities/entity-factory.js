@@ -13,6 +13,8 @@ function createEntity(type) {
         return new StrengthPotion(entityId++, type);
     } else if (type === "skeleton") {
         return new Skeleton(entityId++, type);
+    } else if (type === "dispenser") {
+        return new Dispenser(entityId++, type);
     }
 
     return new Entity(entityId++, type);

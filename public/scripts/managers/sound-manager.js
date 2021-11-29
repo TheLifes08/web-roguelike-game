@@ -3,16 +3,18 @@ class SoundManager {
         this.sounds = {};
         this.context = null;
         this.gainNode = null;
+        this.worldGainNode = null;
         this.loaded = false;
     }
 
     initialize() {
         this.context = new AudioContext();
-        this.gainNode = (this.context.createGain)? this.context.createGain() : this.gainNode.connect(this.context.destination);
+        this.gainNode = (this.context.createGain)? this.context.createGain() : this.context.createGainNode();
+        this.gainNode.connect(this.context.destination);
     }
 
     loadSound(path, callback) {
-        let sound = { path, buffer: null, loaded: false };
+        let sound = { path: path, buffer: null, loaded: false };
         sound.play = function (volume, loop) {
             soundManager.play(this.path, {looping: (loop)? loop : false, volume: (volume)? volume : 1});
         };
@@ -49,29 +51,30 @@ class SoundManager {
     play(path, settings) {
         if (!soundManager.loaded) {
             setTimeout(() => { this.play(path, settings); }, 1000);
+            return;
         }
 
-        let looping = false;
-        let volume = 1.0;
-        let sound = this.sounds[path];
-
-        if (!sound) {
-            return false;
-        }
+        let loop = false;
+        let volume = 1;
 
         if (settings) {
             if (settings.looping) {
-                looping = settings.looping;
+                loop = settings.loop;
             }
             if (settings.volume) {
                 volume = settings.volume;
             }
         }
 
+        let sound = this.sounds[path];
+        if (!sound) {
+            return false;
+        }
+
         let bufferSource = this.context.createBufferSource();
         bufferSource.connect(this.gainNode);
         bufferSource.buffer = sound.buffer;
-        bufferSource.loop = looping;
+        bufferSource.loop = loop;
         this.gainNode.gain.value = volume;
         bufferSource.start(0);
 
@@ -90,7 +93,7 @@ class SoundManager {
         let volume = 1.0 - norm;
 
         if (volume > 0) {
-            this.play(path, { looping: false, volume: volume });
+            this.play(path, { loop: false, volume: volume });
         }
     }
 

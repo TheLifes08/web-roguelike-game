@@ -16,15 +16,24 @@ class Player extends Creature {
     }
 
     touchEntity(object) {
-        if (object.type === "static" && object.name === "exit") {
-            console.log("EXIT!")
+        if (object.type === "static" && object.name.includes("exit1")) {
+            gameManager.changeLevel("/public/data/maps/level2.json");
+        } else if (object.type === "static" && object.name.includes("exit2")) {
+            gameManager.endGame();
         }
 
         super.touchEntity(object);
     }
 
+    attack(attackType) {
+        if (attackType === AttackType.MELEE && this.meleeAttackEnabled) {
+            let num = Math.round(getRandomNumber(1, 3));
+            soundManager.play(`/public/sounds/swing${num}.wav`, { volume: 0.8 });
+        }
+        super.attack(attackType);
+    }
+
     onAttack(damage) {
         super.onAttack(damage);
-        console.log("OUCH:", damage);
     }
 }

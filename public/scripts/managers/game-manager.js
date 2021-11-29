@@ -10,6 +10,7 @@ class GameManager {
     }
 
     endGame() {
+        soundManager.stopAll();
         clearInterval(gameInterval);
 
         let username = window.localStorage["game.username"];
@@ -101,5 +102,18 @@ class GameManager {
         this.update(elapsedTime);
         this.draw();
         this.drawUI();
+    }
+
+    changeLevel(path) {
+        soundManager.stopAll();
+        sceneInfoManager.clearScene();
+        sceneManager.clearScene();
+        sceneManager.drawLoadingScene();
+        gameLoaded = false;
+
+        loadJson(path, (map) => {
+            mapManager.loadMap(map);
+            waitForLoad();
+        });
     }
 }

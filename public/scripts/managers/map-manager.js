@@ -51,9 +51,15 @@ class MapManager {
                         entity.size.y = object.height;
 
                         if (entity.type === "player") {
-                            gameManager.initializePlayer(entity);
-                            entities.push(entity);
-                        } else if (entity.type === "static" || entity.type === "spikes") {
+                            if (gameManager.player) {
+                                gameManager.player.position.x = entity.position.x;
+                                gameManager.player.position.y = entity.position.y;
+                                entities.push(gameManager.player);
+                            } else {
+                                gameManager.initializePlayer(entity);
+                                entities.push(entity);
+                            }
+                        } else if (entity.type === "static" || entity.type === "spikes" || entity.type === "dispenser") {
                             entity.position.y -= entity.size.y;
                             entity.gid = object.gid;
                             entities.push(entity);

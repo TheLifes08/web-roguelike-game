@@ -7,8 +7,8 @@ class Creature extends Entity {
         this.health = 200;
         this.damage = 0;
         this.speed = 150;
-        this.meleeAttackTimeout = 250.0;
-        this.distanceAttackTimeout = 500.0;
+        this.meleeAttackTimeout = 1000.0;
+        this.distanceAttackTimeout = 1000.0;
         this.meleeAttackEnabled = true;
         this.distanceAttackEnabled = true;
     }
@@ -33,11 +33,12 @@ class Creature extends Entity {
             shiftPosition(bullet.position, this.direction, distance);
 
             gameManager.entities.push(bullet);
+            soundManager.play("/public/sounds/magic_shot.wav", { volume: 0.8 });
         } else if (this.meleeAttackEnabled && attackType === AttackType.MELEE) {
             this.meleeAttackEnabled = false;
             setTimeout(() => { this.meleeAttackEnabled = true; }, this.meleeAttackTimeout);
 
-            let attackRect = new Rect(new Position(this.position.x, this.position.y), new Size(this.size.x, this.size.y));
+            let attackRect = new Rect(new Position(this.position.x + 8, this.position.y + 8), new Size(this.size.x - 16, this.size.y - 16));
             let distance = (isHorizontalDirection(this.direction))? this.size.x : this.size.y;
             shiftPosition(attackRect.position, this.direction, distance);
             let objects = getEntitiesInRect(attackRect);

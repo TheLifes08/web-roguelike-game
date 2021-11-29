@@ -359,13 +359,13 @@
                  "gid":228,
                  "height":32,
                  "id":32,
-                 "name":"exit",
+                 "name":"exit1",
                  "rotation":0,
                  "type":"static",
                  "visible":true,
                  "width":32,
-                 "x":1153,
-                 "y":571
+                 "x":1211,
+                 "y":592
                 }, 
                 {
                  "gid":244,
@@ -459,8 +459,8 @@
                  "type":"health_potion",
                  "visible":true,
                  "width":32,
-                 "x":76,
-                 "y":287
+                 "x":42,
+                 "y":556
                 }, 
                 {
                  "height":32,
@@ -470,8 +470,8 @@
                  "type":"strength_potion",
                  "visible":true,
                  "width":32,
-                 "x":976,
-                 "y":457
+                 "x":971,
+                 "y":443
                 }, 
                 {
                  "height":32,
@@ -481,8 +481,8 @@
                  "type":"skeleton",
                  "visible":true,
                  "width":32,
-                 "x":28,
-                 "y":352
+                 "x":58,
+                 "y":488
                 }, 
                 {
                  "height":32,
@@ -492,8 +492,8 @@
                  "type":"skeleton",
                  "visible":true,
                  "width":32,
-                 "x":744,
-                 "y":477
+                 "x":695,
+                 "y":515
                 }, 
                 {
                  "height":32,
@@ -514,8 +514,8 @@
                  "type":"skeleton",
                  "visible":true,
                  "width":32,
-                 "x":819,
-                 "y":397
+                 "x":836,
+                 "y":471
                 }, 
                 {
                  "height":32,
@@ -525,8 +525,8 @@
                  "type":"skeleton",
                  "visible":true,
                  "width":32,
-                 "x":61,
-                 "y":449
+                 "x":114,
+                 "y":540
                 }, 
                 {
                  "height":32,
@@ -536,8 +536,8 @@
                  "type":"health_potion",
                  "visible":true,
                  "width":32,
-                 "x":977,
-                 "y":384
+                 "x":982,
+                 "y":386
                 }, 
                 {
                  "height":32,
@@ -547,8 +547,41 @@
                  "type":"strength_potion",
                  "visible":true,
                  "width":32,
-                 "x":1099,
-                 "y":556
+                 "x":1103,
+                 "y":557
+                }, 
+                {
+                 "height":32,
+                 "id":65,
+                 "name":"skeleton6",
+                 "rotation":0,
+                 "type":"skeleton",
+                 "visible":true,
+                 "width":32,
+                 "x":557,
+                 "y":484
+                }, 
+                {
+                 "height":32,
+                 "id":66,
+                 "name":"skeleton2",
+                 "rotation":0,
+                 "type":"skeleton",
+                 "visible":true,
+                 "width":32,
+                 "x":1111,
+                 "y":468
+                }, 
+                {
+                 "height":32,
+                 "id":67,
+                 "name":"skeleton2",
+                 "rotation":0,
+                 "type":"skeleton",
+                 "visible":true,
+                 "width":32,
+                 "x":1187,
+                 "y":467
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -579,7 +612,7 @@
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":65,
+ "nextobjectid":68,
  "orientation":"orthogonal",
  "renderorder":"left-up",
  "tiledversion":"1.7.2",

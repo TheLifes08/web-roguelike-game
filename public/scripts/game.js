@@ -26,7 +26,17 @@ function start() {
         sceneManager.drawLoadingScene();
         sceneInfoManager = new SceneManager(canvasInfo, new Position(0, 0));
 
-        let audios = ["/public/sounds/background.mp3"];
+        let audios = ["/public/sounds/background.mp3",
+            "/public/sounds/magic_shot.wav",
+            "/public/sounds/magic_shot_collapse.wav",
+            "/public/sounds/swing1.wav",
+            "/public/sounds/swing2.wav",
+            "/public/sounds/swing3.wav",
+            "/public/sounds/skeleton/shade1.wav",
+            "/public/sounds/skeleton/shade2.wav",
+            "/public/sounds/skeleton/shade3.wav",
+            "/public/sounds/skeleton/shade4.wav",
+            "/public/sounds/skeleton/shade5.wav"];
 
         soundManager.loadSoundArray(audios);
 
@@ -38,19 +48,17 @@ function start() {
             mapManager.loadMap(map);
         });
 
-        load();
+        waitForLoad();
         exec();
     }
 }
 
-function load() {
+function waitForLoad() {
     if (!spriteManager.spritesLoaded || !mapManager.tileSetImagesLoaded || !gameManager.entities || !soundManager.loaded) {
-        setTimeout(() => {load();}, 100);
+        setTimeout(() => { waitForLoad(); }, 100);
         return;
     }
-
     soundManager.play("/public/sounds/background.mp3", { looping: true, volume: 1 });
-
     gameLoaded = true;
 }
 

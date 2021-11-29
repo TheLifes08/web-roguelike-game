@@ -28,13 +28,17 @@ class Skeleton extends Creature {
             if (this.movementTarget) {
                 this.moveToPosition(this.movementTarget);
 
-                let attackRect = new Rect(new Position(this.position.x + 4, this.position.y + 4), new Size(this.size.x - 8, this.size.y - 8));
-                let distance = (isHorizontalDirection(this.direction))? this.size.x : this.size.y;
-                shiftPosition(attackRect.position, this.direction, distance);
-                let objects = getEntitiesInRect(attackRect, "player");
+                if (this.meleeAttackEnabled) {
+                    let attackRect = new Rect(new Position(this.position.x + 8, this.position.y + 8), new Size(this.size.x - 16, this.size.y - 16));
+                    let distance = (isHorizontalDirection(this.direction)) ? this.size.x : this.size.y;
+                    shiftPosition(attackRect.position, this.direction, distance);
+                    let objects = getEntitiesInRect(attackRect, "player");
 
-                if (objects[0]) {
-                    this.attack(AttackType.MELEE);
+                    if (objects[0]) {
+                        let num = Math.round(getRandomNumber(1, 5));
+                        soundManager.play(`/public/sounds/skeleton/shade${num}.wav`, {volume: 0.7});
+                        this.attack(AttackType.MELEE);
+                    }
                 }
             }
         } else {
@@ -46,19 +50,19 @@ class Skeleton extends Creature {
         this.stopMovement();
 
         if (getRandomNumber(0, 1) > 0.5) {
-            if (Math.abs(position.x - this.position.x) > 40) {
+            if (Math.abs(position.x - this.position.x) > 16) {
                 this.setMovement((position.x > this.position.x)? Direction.RIGHT : Direction.LEFT, this.speed);
                 return;
             }
-            if (Math.abs(position.y - this.position.y) > 40) {
+            if (Math.abs(position.y - this.position.y) > 16) {
                 this.setMovement((position.y > this.position.y)? Direction.DOWN : Direction.UP, this.speed);
             }
         } else {
-            if (Math.abs(position.y - this.position.y) > 40) {
+            if (Math.abs(position.y - this.position.y) > 16) {
                 this.setMovement((position.y > this.position.y)? Direction.DOWN : Direction.UP, this.speed);
                 return;
             }
-            if (Math.abs(position.x - this.position.x) > 40) {
+            if (Math.abs(position.x - this.position.x) > 16) {
                 this.setMovement((position.x > this.position.x)? Direction.RIGHT : Direction.LEFT, this.speed);
             }
         }

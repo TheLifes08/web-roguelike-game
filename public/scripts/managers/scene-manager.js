@@ -114,6 +114,7 @@ class SceneManager {
             switch (entity.type) {
                 case "static":
                 case "spikes":
+                case "dispenser":
                     this.drawTileEntity(entity);
                     break;
                 case "bullet":
