@@ -1,0 +1,20 @@
+html
+    head
+        meta(charset="utf-8")
+        title #{game.title}
+        link(rel="shortcut icon", href="/public/images/favicon.png", type="image/png")
+        link(rel="stylesheet", type="text/css", href="/public/styles/all.css")
+        script(type="text/javascript", src="/public/scripts/records.js")
+
+    body(onload="onLoad()")
+        div(style="margin: auto; width: 310px;")
+            span Таблица рекордов:
+            br
+            table(id="records-table", style="margin: 5px; width: 300px; border: 1px solid black;")
+                tr
+                    th Игрок
+                    th Очки
+                tbody
+
+        div(style="width: 200px; padding: 2px; margin: auto;")
+            button(style="width: 200px;" onclick="redirectToGame()") Играть заново

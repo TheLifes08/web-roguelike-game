@@ -1,0 +1,30 @@
+html
+    head
+        meta(charset="utf-8")
+        title #{game.title}
+        link(rel="shortcut icon", href="/public/images/favicon.png", type="image/png")
+        link(rel="stylesheet", type="text/css", href="/public/styles/all.css")
+        script(type="text/javascript", src="/public/scripts/structures.js")
+        script(type="text/javascript", src="/public/scripts/helpers.js")
+        script(type="text/javascript", src="/public/scripts/entities/entity.js")
+        script(type="text/javascript", src="/public/scripts/entities/static/spikes.js")
+        script(type="text/javascript", src="/public/scripts/entities/static/strength-potion.js")
+        script(type="text/javascript", src="/public/scripts/entities/static/health-potion.js")
+        script(type="text/javascript", src="/public/scripts/entities/creature.js")
+        script(type="text/javascript", src="/public/scripts/entities/player.js")
+        script(type="text/javascript", src="/public/scripts/entities/enemies/skeleton.js")
+        script(type="text/javascript", src="/public/scripts/entities/bullet.js")
+        script(type="text/javascript", src="/public/scripts/entities/entity-factory.js")
+        script(type="text/javascript", src="/public/scripts/managers/game-manager.js")
+        script(type="text/javascript", src="/public/scripts/managers/physic-manager.js")
+        script(type="text/javascript", src="/public/scripts/managers/event-manager.js")
+        script(type="text/javascript", src="/public/scripts/managers/sprite-manager.js")
+        script(type="text/javascript", src="/public/scripts/managers/map-manager.js")
+        script(type="text/javascript", src="/public/scripts/managers/scene-manager.js")
+        script(type="text/javascript", src="/public/scripts/managers/sound-manager.js")
+        script(type="text/javascript", src="/public/scripts/game.js")
+
+    body(onload="start();", style="width: " + (game.width + 256 + 3) + "px; height: " + (game.height + 2) + "px;")
+        canvas(id="canvas-game", class="inline canvas-window", width=game.width, height=game.height) Ваш браузер не поддерживает элемент canvas.
+        canvas(id="canvas-info", class="inline info-window", width=256, height=game.height) Ваш браузер не поддерживает элемент canvas.
+

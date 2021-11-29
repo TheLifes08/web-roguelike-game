@@ -1,0 +1,218 @@
+[
+	{
+		"name": "player",
+		"path": "public/images/sprites/player.png",
+		"frames": {
+			"down_1": {
+				"x": 0,
+				"y": 0,
+				"width": 32,
+				"height": 32
+			},
+			"down_2": {
+				"x": 32,
+				"y": 0,
+				"width": 32,
+				"height": 32
+			},
+			"down_3": {
+				"x": 64,
+				"y": 0,
+				"width": 32,
+				"height": 32
+			},
+			"left_1": {
+				"x": 0,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"left_2": {
+				"x": 32,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"left_3": {
+				"x": 64,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"right_1": {
+				"x": 0,
+				"y": 64,
+				"width": 32,
+				"height": 32
+			},
+			"right_2": {
+				"x": 32,
+				"y": 64,
+				"width": 32,
+				"height": 32
+			},
+			"right_3": {
+				"x": 64,
+				"y": 64,
+				"width": 32,
+				"height": 32
+			},
+			"up_1": {
+				"x": 0,
+				"y": 96,
+				"width": 32,
+				"height": 32
+			},
+			"up_2": {
+				"x": 32,
+				"y": 96,
+				"width": 32,
+				"height": 32
+			},
+			"up_3": {
+				"x": 64,
+				"y": 96,
+				"width": 32,
+				"height": 32
+			}
+		}
+	},
+	{
+		"name": "skeleton",
+		"path": "public/images/sprites/skeleton.png",
+		"frames": {
+			"down_1": {
+				"x": 0,
+				"y": 0,
+				"width": 32,
+				"height": 32
+			},
+			"down_2": {
+				"x": 32,
+				"y": 0,
+				"width": 32,
+				"height": 32
+			},
+			"down_3": {
+				"x": 64,
+				"y": 0,
+				"width": 32,
+				"height": 32
+			},
+			"left_1": {
+				"x": 0,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"left_2": {
+				"x": 32,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"left_3": {
+				"x": 64,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"right_1": {
+				"x": 0,
+				"y": 64,
+				"width": 32,
+				"height": 32
+			},
+			"right_2": {
+				"x": 32,
+				"y": 64,
+				"width": 32,
+				"height": 32
+			},
+			"right_3": {
+				"x": 64,
+				"y": 64,
+				"width": 32,
+				"height": 32
+			},
+			"up_1": {
+				"x": 0,
+				"y": 96,
+				"width": 32,
+				"height": 32
+			},
+			"up_2": {
+				"x": 32,
+				"y": 96,
+				"width": 32,
+				"height": 32
+			},
+			"up_3": {
+				"x": 64,
+				"y": 96,
+				"width": 32,
+				"height": 32
+			}
+		}
+	},
+	{
+		"name": "items",
+		"path": "public/images/sprites/items.png",
+		"frames": {
+			"heard": {
+				"x": 0,
+				"y": 32,
+				"width": 32,
+				"height": 32
+			},
+			"sword": {
+				"x": 32,
+				"y": 160,
+				"width": 32,
+				"height": 32
+			},
+			"health_potion": {
+				"x": 0,
+				"y": 288,
+				"width": 32,
+				"height": 32
+			},
+			"strength_potion": {
+				"x": 96,
+				"y": 288,
+				"width": 32,
+				"height": 32
+			}
+		}
+	},
+	{
+		"name": "bullets",
+		"path": "public/images/sprites/bullets.png",
+		"frames": {
+			"bullet1_1": {
+				"x": 0,
+				"y": 256,
+				"width": 16,
+				"height": 16
+			},
+			"bullet1_2": {
+				"x": 16,
+				"y": 256,
+				"width": 16,
+				"height": 16
+			},
+			"bullet1_3": {
+				"x": 32,
+				"y": 256,
+				"width": 16,
+				"height": 16
+			},
+			"bullet1_4": {
+				"x": 48,
+				"y": 256,
+				"width": 16,
+				"height": 16
+			}
+		}
+	}
+]

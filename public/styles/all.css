@@ -1,0 +1,14 @@
+.inline {
+    float: left;
+}
+
+.canvas-window {
+    border: 1px solid black;
+    background-color: #2f2f2e;
+}
+
+.info-window {
+    border: 1px solid black;
+    border-left: 0;
+    background-color: #2f2f2e;
+}

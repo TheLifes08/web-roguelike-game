@@ -1,0 +1,11 @@
+{
+  "server": {
+    "listen_ip": "localhost",
+    "listen_port": 4567
+  },
+  "game": {
+    "width": 768,
+    "height": 512,
+    "title": "Mutin Bizzare Adventure"
+  }
+}
