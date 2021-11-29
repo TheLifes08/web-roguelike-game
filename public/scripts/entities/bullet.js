@@ -16,6 +16,7 @@ class Bullet extends Entity {
 
         if (!object.passable) {
             object.onAttack(this.damage);
+            soundManager.playWorldSound("/public/sounds/magic_shot_collapse.wav", this.position);
             this.destroy();
         }
     }

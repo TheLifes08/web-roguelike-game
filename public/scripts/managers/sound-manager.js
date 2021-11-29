@@ -2,22 +2,31 @@ class SoundManager {
     constructor() {
         this.sounds = {};
         this.context = null;
-        this.gainNode = null;
+        this.mainGainNode = null;
         this.worldGainNode = null;
+        this.musicGainNode = null;
         this.loaded = false;
     }
 
     initialize() {
         this.context = new AudioContext();
-        this.gainNode = (this.context.createGain)? this.context.createGain() : this.context.createGainNode();
-        this.gainNode.connect(this.context.destination);
+
+        this.mainGainNode = this.context.createGain();
+        this.musicGainNode = this.context.createGain();
+        this.worldGainNode = this.context.createGain();
+
+        this.mainGainNode.connect(this.context.destination);
+        this.musicGainNode.connect(this.mainGainNode);
+        this.worldGainNode.connect(this.mainGainNode);
     }
 
     loadSound(path, callback) {
         let sound = { path: path, buffer: null, loaded: false };
+
         sound.play = function (volume, loop) {
             soundManager.play(this.path, {looping: (loop)? loop : false, volume: (volume)? volume : 1});
         };
+
         this.sounds[path] = sound;
 
         let request = new XMLHttpRequest();
@@ -56,6 +65,7 @@ class SoundManager {
 
         let loop = false;
         let volume = 1;
+        let gainNodeType = GainNode.MAIN;
 
         if (settings) {
             if (settings.looping) {
@@ -64,6 +74,9 @@ class SoundManager {
             if (settings.volume) {
                 volume = settings.volume;
             }
+            if (settings.gainNodeType) {
+                gainNodeType = settings.gainNodeType;
+            }
         }
 
         let sound = this.sounds[path];
@@ -71,11 +84,23 @@ class SoundManager {
             return false;
         }
 
+        let gainNode;
+        switch (gainNodeType) {
+            case GainNode.MUSIC:
+                gainNode = this.musicGainNode;
+                break;
+            case GainNode.WORLD:
+                gainNode = this.worldGainNode;
+                break;
+            default:
+                gainNode = this.mainGainNode;
+        }
+
         let bufferSource = this.context.createBufferSource();
-        bufferSource.connect(this.gainNode);
+        bufferSource.connect(gainNode);
         bufferSource.buffer = sound.buffer;
         bufferSource.loop = loop;
-        this.gainNode.gain.value = volume;
+        gainNode.gain.value = volume;
         bufferSource.start(0);
 
         return true;
@@ -93,21 +118,29 @@ class SoundManager {
         let volume = 1.0 - norm;
 
         if (volume > 0) {
-            this.play(path, { loop: false, volume: volume });
+            this.play(path, { loop: false, volume: volume, gainNodeType: GainNode.WORLD });
         }
     }
 
     toggleMute() {
-        if (this.gainNode.gain.value > 0) {
-            this.gainNode.gain.value = 0
+        if (this.mainGainNode.gain.value > 0) {
+            this.mainGainNode.gain.value = 0
         } else {
-            this.gainNode.gain.value = 1;
+            this.mainGainNode.gain.value = 1;
         }
     }
 
     stopAll() {
-        this.gainNode.disconnect();
-        this.gainNode = this.context.createGain();
-        this.gainNode.connect(this.context.destination);
+        this.mainGainNode.disconnect();
+        this.musicGainNode.disconnect();
+        this.worldGainNode.disconnect();
+
+        this.mainGainNode = this.context.createGain();
+        this.musicGainNode = this.context.createGain();
+        this.worldGainNode = this.context.createGain();
+
+        this.mainGainNode.connect(this.context.destination);
+        this.musicGainNode.connect(this.mainGainNode);
+        this.worldGainNode.connect(this.mainGainNode);
     }
 }

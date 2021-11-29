@@ -18,7 +18,7 @@ class Skeleton extends Creature {
         this.animation = !(this.velocity.x === 0 && this.velocity.y === 0);
 
         if (!this.died) {
-            if (distanceBetweenPositions(this.position, gameManager.player.position) < 200) {
+            if (distanceBetweenPositions(this.position, gameManager.player.position) < 400) {
                 this.movementTarget = gameManager.player.position;
             } else {
                 this.movementTarget = null;
@@ -29,7 +29,8 @@ class Skeleton extends Creature {
                 this.moveToPosition(this.movementTarget);
 
                 if (this.meleeAttackEnabled) {
-                    let attackRect = new Rect(new Position(this.position.x + 8, this.position.y + 8), new Size(this.size.x - 16, this.size.y - 16));
+                    let attackRect = new Rect(new Position(this.position.x + 8, this.position.y + 8),
+                        new Size(this.size.x - 16, this.size.y - 16));
                     let distance = (isHorizontalDirection(this.direction)) ? this.size.x : this.size.y;
                     shiftPosition(attackRect.position, this.direction, distance);
                     let objects = getEntitiesInRect(attackRect, "player");
@@ -66,5 +67,10 @@ class Skeleton extends Creature {
                 this.setMovement((position.x > this.position.x)? Direction.RIGHT : Direction.LEFT, this.speed);
             }
         }
+    }
+
+    destroy() {
+        gameManager.score += 5;
+        super.destroy();
     }
 }

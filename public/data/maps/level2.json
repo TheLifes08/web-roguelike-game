@@ -68,7 +68,7 @@
          "starty":0,
          "type":"tilelayer",
          "visible":true,
-         "width":80,
+         "width":64,
          "x":0,
          "y":0
         }, 

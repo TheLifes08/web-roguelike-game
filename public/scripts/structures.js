@@ -38,3 +38,4 @@ class Rect {
 const Direction = { UP: "up", DOWN: "down", LEFT: "left", RIGHT: "right" };
 const Movement = { STOP: "stop", BREAK: "break", MOVE: "move" };
 const AttackType = { MELEE: "melee", DISTANCE: "distance" };
+const GainNode = { MAIN: "main", MUSIC: "music", WORLD: "world" };

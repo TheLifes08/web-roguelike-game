@@ -28,7 +28,7 @@ class Player extends Creature {
     attack(attackType) {
         if (attackType === AttackType.MELEE && this.meleeAttackEnabled) {
             let num = Math.round(getRandomNumber(1, 3));
-            soundManager.play(`/public/sounds/swing${num}.wav`, { volume: 0.8 });
+            soundManager.playWorldSound(`/public/sounds/swing${num}.wav`, this.position);
         }
         super.attack(attackType);
     }

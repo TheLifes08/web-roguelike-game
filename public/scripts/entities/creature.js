@@ -33,7 +33,7 @@ class Creature extends Entity {
             shiftPosition(bullet.position, this.direction, distance);
 
             gameManager.entities.push(bullet);
-            soundManager.play("/public/sounds/magic_shot.wav", { volume: 0.8 });
+            soundManager.playWorldSound("/public/sounds/magic_shot.wav", this.position);
         } else if (this.meleeAttackEnabled && attackType === AttackType.MELEE) {
             this.meleeAttackEnabled = false;
             setTimeout(() => { this.meleeAttackEnabled = true; }, this.meleeAttackTimeout);

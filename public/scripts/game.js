@@ -58,7 +58,7 @@ function waitForLoad() {
         setTimeout(() => { waitForLoad(); }, 100);
         return;
     }
-    soundManager.play("/public/sounds/background.mp3", { looping: true, volume: 1 });
+    soundManager.play("/public/sounds/background.mp3", { looping: true, volume: 1, gainNodeType: GainNode.MUSIC });
     gameLoaded = true;
 }
 

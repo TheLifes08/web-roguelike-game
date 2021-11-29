@@ -3,7 +3,7 @@ class Dispenser extends Entity {
         super(name, type);
 
         this.damage = 40;
-        this.shotInterval = setInterval(() => { this.shot() }, getRandomNumber(2000, 4000));
+        this.shotInterval = setInterval(() => { this.shot() }, getRandomNumber(4000, 8000));
     }
 
     shot() {
@@ -16,6 +16,6 @@ class Dispenser extends Entity {
         shiftPosition(bullet.position, Direction.DOWN, 16);
 
         gameManager.entities.push(bullet);
-        soundManager.playWorldSound("/public/sounds/magic_shot.wav", { volume: 0.8 });
+        soundManager.playWorldSound("/public/sounds/magic_shot.wav", this.position);
     }
 }
